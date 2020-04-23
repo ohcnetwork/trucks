@@ -1,0 +1,30 @@
+{
+  "name": "port",
+  "reason": {
+    "react-jsx": 3
+  },
+  "sources": {
+    "dir": "app/javascript",
+    "subdirs": true
+  },
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": false,
+  "bs-dependencies": [
+    "reason-react",
+    "@glennsl/bs-json",
+    "bs-fetch",
+    "bs-webapi",
+    "bs-date-fns"
+  ],
+  "refmt": 3,
+  "warnings": {
+    "number": "-48",
+    "error": "+8"
+  }
+}

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact: one
+  need_food: false
+  fullfilled: false
+
+two:
+  contact: two
+  need_food: false
+  fullfilled: false

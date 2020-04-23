@@ -1,0 +1,56 @@
+<%= link_to vehicle_path(entry.vehicle.id) do %>
+  <div class="bg-white p-4  border border-gray-200 shadow rounded-lg mx-auto my-2">
+    <div>
+      <dl class="grid grid-cols-2 col-gap-2 row-gap-4 sm:grid-cols-8">
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Vehicle Number
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= entry.vehicle.number %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Name of Driver
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= entry.name_of_driver %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Number of Driver
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= entry.number_of_driver %>
+          </dd>
+        </div>
+        <div class="sm:col-span-2">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Last Updated
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= entry.created_at&.strftime("%m/%d/%Y at %I:%M%p") %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Status
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= entry.status %>
+          </dd>
+        </div>
+        <div class="sm:col-span-2">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Location
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= entry&.user&.panchayat&.name %>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+<% end %>

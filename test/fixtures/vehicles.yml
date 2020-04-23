@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  application: one
+  number_plate: MyString
+
+two:
+  application: two
+  number_plate: MyString

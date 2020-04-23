@@ -1,0 +1,160 @@
+/**
+ * This is a namespaced version of the original okaidia theme. All of
+ * the span styling CSS classes have been prefixed with "prism-" to
+ * avoid conflicts at the root level.
+ *
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+.markdown-block pre:not([class*="language-"]) {
+  @apply bg-gray-200 my-3 w-full text-sm rounded overflow-auto p-4 border border-gray-400;
+}
+
+.markdown-block :not(pre) code:not([class*="language-"]) {
+  @apply whitespace-normal bg-gray-200 rounded overflow-auto px-1 py-px border border-gray-400;
+  font-size: 85%;
+}
+
+.markdown-block pre>code:not([class*="language-"]) {
+  @apply p-0 m-0 bg-transparent border-0 break-normal whitespace-pre;
+}
+
+.markdown-block code[class*="language-"], .markdown-block pre[class*="language-"] {
+  color: #f8f8f2;
+  background: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  @apply text-sm;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+
+.markdown-block pre[class*="language-"] {
+  @apply mt-2 p-4;
+  overflow: auto;
+  border-radius: 0.3rem;
+}
+
+.markdown-block :not(pre) code[class*="language-"], .markdown-block pre[class*="language-"] {
+  background: #272822;
+}
+
+/* Inline code */
+
+.markdown-block :not(pre) code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3rem;
+  white-space: normal;
+}
+
+.prism-token.prism-comment, .prism-token.prism-prolog, .prism-token.prism-doctype, .prism-token.prism-cdata {
+  color: slategray;
+}
+
+.prism-token.prism-punctuation {
+  color: #f8f8f2;
+}
+
+.prism-namespace {
+  opacity: 0.7;
+}
+
+.prism-token.prism-property, .prism-token.prism-tag, .prism-token.prism-constant, .prism-token.prism-symbol, .prism-token.prism-deleted {
+  color: #f92672;
+}
+
+.prism-token.prism-boolean, .prism-token.prism-number {
+  color: #ae81ff;
+}
+
+.prism-token.prism-selector, .prism-token.prism-attr-name, .prism-token.prism-string, .prism-token.prism-char, .prism-token.prism-builtin, .prism-token.prism-inserted {
+  color: #a6e22e;
+}
+
+.prism-token.prism-operator, .prism-token.prism-entity, .prism-token.prism-url, .language-css .prism-token.prism-string, .prism-style .prism-token.prism-string, .prism-token.prism-variable {
+  color: #f8f8f2;
+}
+
+.prism-token.prism-atrule, .prism-token.prism-attr-value, .prism-token.prism-function, .prism-token.prism-class-name {
+  color: #e6db74;
+}
+
+.prism-token.prism-keyword {
+  color: #66d9ef;
+}
+
+.prism-token.prism-regex, .prism-token.prism-important {
+  color: #fd971f;
+}
+
+.prism-token.prism-important, .prism-token.prism-bold {
+  font-weight: bold;
+}
+
+.prism-token.prism-italic {
+  font-style: italic;
+}
+
+.prism-token.prism-entity {
+  cursor: help;
+}
+
+/*
+ * Styling for line numbers plugin follows!
+ */
+
+.markdown-block pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8rem;
+  counter-reset: linenumber;
+}
+
+.markdown-block pre[class*="language-"].line-numbers>code {
+  position: relative;
+  white-space: inherit;
+}
+
+.markdown-block .line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: -1px;
+  font-size: 100%;
+  left: -3.8rem;
+  width: 3rem;
+  /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-block .line-numbers-rows>span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+
+.markdown-block .line-numbers-rows>span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8rem;
+  text-align: right;
+}

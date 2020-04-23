@@ -1,0 +1,160 @@
+<section>
+  <div class="bg-white shadow overflow-hidden sm:rounded-md w-full">
+    <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 rounded-t-lg">
+      <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
+        <div class="ml-4 mt-2">
+          <h1 class="text-3xl font-medium text-gray-900">
+            <%= @houses&.first&.panchayat&.name %>
+          </h1>
+          <div>
+            <%= @houses.empty? ? "No application are pending" : "Pending Houses for verification" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul>
+      <% @houses.each do |house| %>
+        <li class="border-t border-gray-200">
+          <%= link_to application_house_path(house.application, house), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
+            <div class="flex items-center px-4 py-4 sm:px-6">
+              <div class="min-w-0 flex-1 flex items-center">
+                <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm leading-5 font-medium text-gray-500">
+                      Travellers
+                    </dt>
+                    <% house.application.contacts.pluck(:name).map do |name| %>
+                      <div>
+                        <%= name %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm leading-5 font-medium text-gray-500">
+                      Address
+                    </dt>
+                    <dd class="mt-1 text-sm leading-5 text-gray-900">
+                      <div><%= house.name %></div>
+                      <div><%= simple_format(house.address) %></div>
+                    </dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm leading-5 font-medium text-gray-500">
+                      Panchayat
+                    </dt>
+                    <dd class="mt-1 text-sm leading-5 text-gray-900">
+                      <%= house.panchayat.name %>
+                    </dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm leading-5 font-medium text-gray-500">
+                      Ward
+                    </dt>
+                    <dd class="mt-1 text-sm leading-5 text-gray-900">
+                      <%= house.ward %>
+                    </dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    <dt class="text-sm leading-5 font-medium text-gray-500">
+                      Status
+                    </dt>
+                    <dd class="mt-1 text-sm leading-5 text-gray-900">
+                      <% if house.status.present? %>
+                        <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                        Approved
+                      <% else %>
+                        <i class="fas fa-times-circle text-red-500 mr-1"></i>
+                        Pending Approval
+                      <% end %>
+                    </dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <% if house.status.present? %>
+                    <% else %>
+                      <div>
+                        <div class="px-2 py-1 bg-orange-100 text-orange-700 border-orange-700 border rounded-lg text-center">
+                          Pending
+                        </div>
+                      </div>
+                    <% end %>
+                    <div>
+                      <div class="px-2 py-1 bg-orange-100 text-orange-700 border-orange-700 border rounded-lg text-center flex items-center">
+                        <i class="fas fa-eye mr-2 ml-2"></i>
+                        <sapn class="mr-2">View</sapn>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+
+  <!--  <div class="mt-4 flex flex-col">-->
+  <!--    <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">-->
+  <!--      <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">-->
+  <!--        <table class="min-w-full">-->
+  <!--          <thead>-->
+  <!--          <tr>-->
+  <!--            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">-->
+  <!--              Travellers-->
+  <!--            </th>-->
+  <!--            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">-->
+  <!--              Address-->
+  <!--            </th>-->
+  <!--            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">-->
+  <!--              Ward-->
+  <!--            </th>-->
+  <!--            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">-->
+  <!--              Contact-->
+  <!--            </th>-->
+  <!--            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">-->
+  <!--              Status-->
+  <!--            </th>-->
+  <!--          </tr>-->
+  <!--          </thead>-->
+  <!--          <tbody>-->
+  <%# @houses.each do |house| %>
+  <!--            <tr class="bg-white hover:bg-gray-200">-->
+  <!--              <a>-->
+  <!--                <td class="px-6 py-4 text-sm leading-5 font-medium text-gray-900">-->
+  <%# house.application.contacts.pluck(:name).map do |name| %>
+  <!--                    <div>-->
+  <%#= name %>
+  <!--                    </div>-->
+  <%# end %>
+  <!--                </td>-->
+  <!--                <td class="px-6 py-4   text-sm leading-5 text-gray-500">-->
+  <%#= link_to application_house_path(house.application, house) do %>
+  <!--                    <div><%#= house.name %></div>-->
+  <!--                    <div><%#= simple_format(house.address) %></div>-->
+  <%# end %>
+  <!--                </td>-->
+  <!--                <td class="px-6 py-4   text-sm leading-5 text-gray-500">-->
+  <!--                  <%#= house.ward %> Ward-->
+  <!--                </td>-->
+  <!--                <td class="px-6 py-4   text-sm leading-5 text-gray-500">-->
+  <!--                  <div><%#= house.contact_person %></div>-->
+  <!--                  <div> <%#= house.contact_number %></div>-->
+  <!--                </td>-->
+  <!--                <td class="px-6 py-4   text-sm leading-5 text-gray-500">-->
+  <%# if house.status.present? %>
+  <%# else %>
+  <!--                    <div class="px-2 py-1 bg-orange-100 text-orange-700 border-orange-700 border rounded-lg text-center">-->
+  <!--                      Pending-->
+  <!--                    </div>-->
+  <%# end %>
+  <!--                </td>-->
+  <!--              </a>-->
+  <!--            </tr>-->
+  <%# end %>
+  <!--          </tbody>-->
+  <!--        </table>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+</section>
