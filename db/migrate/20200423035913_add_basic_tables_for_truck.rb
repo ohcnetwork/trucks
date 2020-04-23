@@ -1,12 +1,12 @@
 class AddBasicTablesForTruck < ActiveRecord::Migration[6.0]
   def change
-    # drop_table :vehicles
-    # drop_table :applications
-    # drop_table :calls
-    # drop_table :contacts
-    # drop_table :health_reports
-    # drop_table :houses
-    # drop_table :ports
+    drop_table :vehicles
+    drop_table :applications
+    drop_table :calls
+    drop_table :contacts
+    drop_table :health_reports
+    drop_table :houses
+    drop_table :ports
 
     create_table :vehicles do |t|
       t.string :number
