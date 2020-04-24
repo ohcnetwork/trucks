@@ -4,9 +4,9 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <%= f.input :vehicle_number, label: 'Enter the vehicle number', placeholder: 'KL01AB0000', required: true %>
-    <%= f.input :name_of_driver, label: 'Name the of driver', required: true %>
+    <%= f.input :name_of_driver, label: 'Name of the driver', required: true %>
     <%= f.input :number_of_driver, label: 'Number of the driver', required: true %>
-    <%= f.input :status, input_html: { class: 'form-select mt-1 block w-ful' }, label: 'Entry ot Exit', required: true %>
+    <%= f.input :status, input_html: { class: 'form-select mt-1 block w-ful' }, label: 'Entry or Exit', required: true %>
     <%= f.association :state, label: 'State coming from', collection: State.all(), input_html: { class: 'form-select', id: 'dropdown-choice-select' }, required: true %>
     <span class="inline-flex rounded-md shadow-sm pl-10">
           <%= f.button :submit, 'Enter in log book', 'data-turbolinks-scroll': false, class: 'mt-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:border-gray-700 focus:shadow-outline-indigo active:bg-gray-700 transition ease-in-out duration-150' %>
