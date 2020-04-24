@@ -26,13 +26,13 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
-    vehicle = Vehicle.first_or_create!(number: entry_params['vehicle_number'].downcase!)
+    vehicle = Vehicle.first_or_create!(number: entry_params['vehicle_number'].downcase)
     @entry.user_id = current_user.id
     @entry.vehicle_id = vehicle.id
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to vehicle, notice: "Truck data was added Successfully" }
+        format.html { redirect_to root_path, notice: "Truck data was added Successfully" }
       else
         format.html { render :new }
       end
