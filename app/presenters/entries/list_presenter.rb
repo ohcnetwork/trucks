@@ -10,7 +10,7 @@ module Entries
     end
 
     def entries
-      @entries ||= filter.present? ? filter.includes(:state, user: :panchayat).order('created_at DESC') : scope_by_date.order('created_at DESC')
+      @entries ||= filter.present? ? filter.includes(:state, :vehicle, user: :panchayat).order('created_at DESC') : scope_by_date.order('created_at DESC')
     end
 
     def filter

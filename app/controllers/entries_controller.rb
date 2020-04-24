@@ -26,7 +26,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
-    vehicle = Vehicle.where(number: entry_params['vehicle_number'].downcase).first_or_create!
+    vehicle = Vehicle.where(number: entry_params['vehicle_number'].downcase.scan(/\w+/).join('')).first_or_create!
     @entry.user_id = current_user.id
     @entry.vehicle_id = vehicle.id
 
