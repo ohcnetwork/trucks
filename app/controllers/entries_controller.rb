@@ -26,7 +26,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
-    vehicle = Vehicle.first_or_create!(number: entry_params['vehicle_number'].downcase)
+    vehicle = Vehicle.where(number: entry_params['vehicle_number'].downcase).first_or_create!
     @entry.user_id = current_user.id
     @entry.vehicle_id = vehicle.id
 
@@ -58,6 +58,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:vehicle_number, :number_of_driver, :name_of_driver, :status)
+    params.require(:entry).permit(:vehicle_number, :number_of_driver, :name_of_driver, :status, :state_id)
   end
 end

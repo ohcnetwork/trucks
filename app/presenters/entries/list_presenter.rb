@@ -10,13 +10,14 @@ module Entries
     end
 
     def entries
-      @entries ||= filter.present? ? filter.includes(user: :panchayat).order('created_at DESC') : scope_by_date.order('created_at DESC')
+      @entries ||= filter.present? ? filter.includes(:state, user: :panchayat).order('created_at DESC') : scope_by_date.order('created_at DESC')
     end
 
     def filter
       search = view.params[:search]
       if search.present?
-        search[:category].present? ? filter_by_category(scope_by_date) : scope_by_date
+        s = search[:category].present? ? filter_by_category(scope_by_date) : scope_by_date
+        search[:state].present? ? filter_by_state(s) : s
       else
         scope_by_date
       end
@@ -46,6 +47,10 @@ module Entries
       consultations.where(status: view.params[:search][:category])
     end
 
+    def filter_by_state(consultations)
+      consultations.where(state: view.params[:search][:state])
+    end
+
     def search
       @search ||= view.params[:search]
     end
@@ -56,6 +61,10 @@ module Entries
 
     def search_category
       search.present? ? search[:category].present? ? search[:category] : nil : nil
+    end
+
+    def search_state
+      search.present? ? search[:state].present? ? search[:state] : nil : nil
     end
   end
 end
