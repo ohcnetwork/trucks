@@ -48,6 +48,17 @@ module Entries
       @summary = Entry.where(created_at: date_window)
     end
 
+    def stats
+      @stats ||= summary.includes(user: :panchayat).each_with_object({}) do |e, hash|
+        old_hash = hash
+        hash[e.user&.panchayat&.name] = [
+          old_hash[e.user&.panchayat&.name]&.first.to_i + (e.status == 'entry' ? 1 : 0),
+          old_hash[e.user&.panchayat&.name]&.second.to_i + (e.status == 'entry' ? 0 : 1),
+          old_hash[e.user&.panchayat&.name]&.last.to_i + 1
+        ]
+      end
+    end
+
     def text_search_entries(number)
       Entry.joins(:vehicle).where("vehicles.number LIKE ?", "%#{number.downcase!}%")
     end
