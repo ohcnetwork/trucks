@@ -28,7 +28,6 @@
                     <div class="flex flex-col text-left md:flex-row">
                       <%= f.input :start_date, label: 'From', class: 'flex', html5: true, input_html: { class: 'flex form-select mr-4', value: presenter.start_date.to_s }, as: :date, default: Date.today, required: false %>
                       <%= f.input :end_date, label: 'To', class: 'flex', html5: true, input_html: { class: 'flex form-select mr-4', value: presenter.end_date.to_s }, as: :date, default: Date.today, required: false %>
-                      <%= f.input :state, label: 'State', input_html: { class: 'flex form-select mr-4' }, collection: State.all.map { |a| [a.name, a.id] }, required: false %>
                     </div>
                     <div class="flex">
                       <%= f.submit "Search", class: "mr-2 cursor-pointer rounded shadow inline-block px-2 py-1 bg-indigo-600 text-white mt-4" %>
