@@ -22,6 +22,20 @@
                   <%= presenter.start_date&.strftime("%m/%d/%Y at %I:%M%p") %> to
                   <%= Time.zone.now&.strftime("%m/%d/%Y at %I:%M%p") %>
                 </div>
+                <div class="mt-4 p-2">
+                  <%= simple_form_for :search, url: root_path, method: "GET" do |f| %>
+
+                    <div class="flex flex-col text-left md:flex-row">
+                      <%= f.input :start_date, label: 'From', class: 'flex', html5: true, input_html: { class: 'flex form-select mr-4', value: presenter.start_date.to_s }, as: :date, default: Date.today, required: false %>
+                      <%= f.input :end_date, label: 'To', class: 'flex', html5: true, input_html: { class: 'flex form-select mr-4', value: presenter.end_date.to_s }, as: :date, default: Date.today, required: false %>
+                      <%= f.input :state, label: 'State', input_html: { class: 'flex form-select mr-4' }, collection: State.all.map { |a| [a.name, a.id] }, required: false %>
+                    </div>
+                    <div class="flex">
+                      <%= f.submit "Search", class: "mr-2 cursor-pointer rounded shadow inline-block px-2 py-1 bg-indigo-600 text-white mt-4" %>
+                      <%= link_to "Reset", root_path, class: 'bg-white cursor-pointer rounded shadow inline-block px-2 py-1 mt-4' %>
+                    </div>
+                  <% end %>
+                </div>
                 <dl class="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3 mt-4">
                   <div class="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
                     <dt class="order-2 mt-2 text-lg leading-6 font-medium text-gray-500" id="item-1">
