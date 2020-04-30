@@ -25,6 +25,7 @@ RUN bundle config --global frozen 1 \
 && find /usr/local/bundle/gems/ -name "*.o" -delete
 
 COPY . /app/
+RUN yarn install --verbose
 RUN SECRET_KEY_BASE='dummy' RAILS_ENV='production' rails assets:precompile
 RUN rm -rf node_modules tmp/* log/*
 
