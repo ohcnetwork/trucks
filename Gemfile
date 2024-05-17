@@ -50,11 +50,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'solargraph'
+  gem 'solargraph', '>= 0.39.0'
 
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
+  gem 'rubocop', '>= 0.82.0'
+  gem 'rubocop-performance', '>= 1.6.0'
+  gem 'rubocop-rails', '>= 2.6.0'
 
 end
 
